@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rev. Thalawe Rahula Himi - Premium Portfolio & Workspace Manager</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Premium glassmorphic effects for the iOS look and feel */
+    .glassmorphism-ios {
+      background: rgba(15, 23, 42, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    
+    .glassmorphism-ios-light {
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    /* Ambient animated mesh gradients for premium branding */
+    .dark-mesh-gradient {
+      background-color: #030712;
+      background-image: 
+        radial-gradient(at 0% 0%, hsla(220,100%,10%,1) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, hsla(240,100%,15%,1) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, hsla(225,80%,12%,1) 0px, transparent 50%);
+    }
+
+    .light-mesh-gradient {
+      background-color: #f8fafc;
+      background-image: 
+        radial-gradient(at 0% 0%, hsla(210,100%,96%,1) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, hsla(220,100%,94%,1) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, hsla(190,100%,95%,1) 0px, transparent 50%);
+    }
+
+    /* Transition animations */
+    .fade-in {
+      animation: fadeIn 0.4s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(156, 163, 175, 0.25);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(156, 163, 175, 0.4);
+    }
+  </style>
+</head>
+<body class="dark-mesh-gradient text-slate-100 min-h-screen pb-32 transition-colors duration-500 overflow-x-hidden font-sans" id="body-root">
+
+  <!-- Top iOS Status Bar -->
+  <div class="fixed top-0 left-0 right-0 z-50 px-4 py-2.5 flex justify-between items-center text-[11px] font-semibold tracking-wide backdrop-blur-md border-b bg-slate-950/40 border-slate-900 text-slate-300 transition-colors" id="status-bar">
+    <div class="flex items-center gap-2">
+      <span class="font-mono" id="live-time">12:00 PM</span>
+      <span class="text-[9px] uppercase font-bold tracking-widest text-slate-400">Sri Lanka</span>
+    </div>
+
+    <div class="flex items-center gap-1.5">
+      <span class="text-[9px] px-2.5 py-0.5 rounded-full font-mono bg-slate-900 text-slate-400 border border-slate-800/60" id="terminal-badge">
+        Dev Terminal: active.rahula
+      </span>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <div class="flex items-center gap-1.5">
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <i data-lucide="battery" class="w-4 h-4"></i>
+      </div>
+      <!-- Theme Toggle Button -->
+      <button onclick="toggleTheme()" class="p-1 rounded-lg hover:scale-105 transition-all cursor-pointer text-amber-400" id="theme-btn" title="Toggle Light/Dark Theme">
+        <i data-lucide="sun" class="w-3.5 h-3.5" id="theme-icon"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="max-w-6xl mx-auto px-4 pt-16 md:pt-20">
+    
+    <!-- Hero Profile Widget Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-5 mb-8">
+      
+      <!-- Developer Bio Card -->
+      <div class="md:col-span-8 p-6 rounded-3xl border backdrop-blur-md flex flex-col justify-between overflow-hidden relative glassmorphism-ios" id="bio-card">
+        <!-- Ambient background glow -->
+        <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full filter blur-xl"></div>
+        
+        <div class="relative">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
+            <div class="flex items-center gap-3">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-orange-500/20">
+                TR
+              </div>
+              <div>
+                <h1 class="text-xl font-extrabold tracking-tight text-white" id="bio-name">
+                  Rev. Thalawe Rahula Himi
+                </h1>
+                <p class="text-xs font-semibold text-blue-400" id="bio-sub">
+                  iCET Certified Software Engineer & Full-Stack Architect
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-1.5 self-start sm:self-center bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-400">Available for Projects</span>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <div class="flex items-start gap-2.5">
+              <span class="text-sm mt-0.5">🔥</span>
+              <p class="text-sm leading-relaxed text-slate-300" id="story-p1">
+                <strong>Path of Spiritual Focus:</strong> Guided by deep spiritual discipline and a profound passion for computer science, I turned all educational challenges into stepping stones. Today, I combine absolute mindfulness with enterprise code.
+              </p>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <span class="text-sm mt-0.5">🎓</span>
+              <p class="text-sm leading-relaxed text-slate-300" id="story-p2">
+                I am an official graduate of the prestigious <strong>iCET Certified Master Program (Software Engineering)</strong> and hold an <strong>International Diploma in ICT (ICBT Campus)</strong>. I build highly optimized, secure full-stack software solutions.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Contacts & Links -->
+        <div class="mt-6 pt-5 border-t border-slate-800/60 flex flex-wrap gap-2.5" id="contacts-row">
+          <button onclick="switchTab('estimator')" class="px-4 py-2.5 text-xs font-bold rounded-xl bg-orange-600 hover:bg-orange-500 text-white transition-all shadow-md flex items-center gap-1.5 cursor-pointer">
+            Launch Brief Designer <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </button>
+          <button onclick="switchTab('advisor')" class="px-4 py-2.5 text-xs font-bold rounded-xl border border-slate-800 bg-slate-900/40 hover:bg-slate-800 text-slate-200 transition-all flex items-center gap-1.5 cursor-pointer" id="adv-btn">
+            Consult AI Assistant <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-400"></i>
+          </button>
+          <a href="mailto:sithuvilidehena207@gmail.com" class="px-4 py-2.5 text-xs font-bold rounded-xl border border-slate-800 bg-slate-900/40 hover:bg-slate-800 text-slate-300 transition-all flex items-center gap-1.5 cursor-pointer" id="mail-btn">
+            <i data-lucide="mail" class="w-3.5 h-3.5 text-blue-400"></i> sithuvilidehena207@gmail.com
+          </a>
+          <a href="https://wa.me/94770739557" target="_blank" class="px-4 py-2.5 text-xs font-bold rounded-xl border border-emerald-800/30 bg-emerald-950/20 hover:bg-emerald-900/20 text-emerald-400 transition-all flex items-center gap-1.5 cursor-pointer" id="whatsapp-btn">
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-400"></i> Chat on WhatsApp
+          </a>
+          <a href="tel:0770739557" class="px-4 py-2.5 text-xs font-bold rounded-xl border border-slate-800 bg-slate-900/40 hover:bg-slate-800 text-slate-300 transition-all flex items-center gap-1.5 cursor-pointer" id="phone-btn">
+            <i data-lucide="phone" class="w-3.5 h-3.5 text-blue-400"></i> 077 073 9557
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Academic Stats Card -->
+      <div class="md:col-span-4 flex flex-col gap-4">
+        
+        <!-- iCET Academic Badge -->
+        <div class="p-5 rounded-3xl flex flex-col justify-between overflow-hidden relative border glassmorphism-ios h-[142px]" id="icet-stat-card">
+          <div class="absolute top-0 right-0 p-3 text-slate-500/10">
+            <i data-lucide="award" class="w-16 h-16"></i>
+          </div>
+          <div>
+            <span class="text-[9px] font-mono tracking-widest font-bold uppercase text-slate-400 block mb-0.5">Verified Training Body</span>
+            <h3 class="text-sm font-bold text-white leading-tight">iCET Academy (Software Mastery)</h3>
+            <p class="text-[10px] text-blue-400 font-semibold">TVEC Reg: P03/0177</p>
+          </div>
+          <div class="mt-2">
+            <div class="flex items-center gap-1.5">
+              <span class="text-xl font-extrabold text-blue-500 font-display">15,000+</span>
+              <span class="text-[10px] text-slate-400">Alumni Certified</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ICBT Campus Badge -->
+        <div class="p-5 rounded-3xl flex flex-col justify-between overflow-hidden relative border glassmorphism-ios h-[142px]" id="icbt-stat-card">
+          <div class="absolute top-0 right-0 p-3 text-slate-500/10">
+            <i data-lucide="book-open" class="w-16 h-16"></i>
+          </div>
+          <div>
+            <span class="text-[9px] font-mono tracking-widest font-bold uppercase text-slate-400 block mb-0.5">International Standard</span>
+            <h3 class="text-sm font-bold text-white leading-tight">ICBT Campus Diploma</h3>
+            <p class="text-[10px] text-indigo-400 font-semibold">6 Months Foundational ICT Core</p>
+          </div>
+          <div class="mt-2 flex justify-between items-center">
+            <span class="text-[10px] text-slate-400 flex items-center gap-1">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i> Completed
+            </span>
+            <button onclick="switchTab('academy')" class="text-[10px] font-bold text-blue-400 hover:underline">View Syllabus &rarr;</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- MAIN INTERACTIVE PORTAL TABS -->
+    <div class="pb-12">
+      
+      <!-- TAB 1: HOME (MY STORY & SERVICES) -->
+      <div id="tab-home" class="tab-content space-y-8 fade-in">
+        <div>
+          <h2 class="text-lg font-bold tracking-tight mb-1 text-white" id="srv-title">Core Software Services</h2>
+          <p class="text-xs text-slate-400" id="srv-desc">High-efficiency customized solutions engineered to standard modular specifications.</p>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Service 1 -->
+          <div class="p-5 rounded-2xl border bg-slate-900/40 border-slate-800/80 hover:border-slate-700 transition-all flex flex-col justify-between service-card" id="sc-1">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400">Enterprise Backend</span>
+                <span class="text-[10px] font-bold font-mono text-emerald-400">LKR 15,000+</span>
+              </div>
+              <h3 class="text-sm font-bold text-white mb-2">Java SE / Spring Boot REST APIs</h3>
+              <p class="text-xs leading-relaxed text-slate-400">High-speed backend microservices, secure JWT token mechanisms, Hibernate ORM, repository patterns, database normalization, and robust controllers.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800/50 flex flex-wrap gap-1.5">
+              <span class="text-[9px] font-mono bg-slate-950 text-slate-300 px-2 py-0.5 rounded border border-slate-900">Spring Boot</span>
+              <span class="text-[9px] font-mono bg-slate-950 text-slate-300 px-2 py-0.5 rounded border border-slate-900">Java OOP</span>
+              <span class="text-[9px] font-mono bg-slate-950 text-slate-300 px-2 py-0.5 rounded border border-slate-900">MySQL / Postgres</span>
+            </div>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="p-5 rounded-2xl border bg-slate-900/40 border-slate-800/80 hover:border-slate-700 transition-all flex flex-col justify-between service-card" id="sc-2">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400">Client Frontend</span>
+                <span class="text-[10px] font-bold font-mono text-emerald-400">LKR 10,000+</span>
+              </div>
+              <h3 class="text-sm font-bold text-white mb-2">iOS Glassy Responsive Web Apps</h3>
+              <p class="text-xs leading-relaxed text-slate-400">Highly interactive single-page applications, smooth micro-interactions, responsive grids, and stunning glassy user interfaces styled with Tailwind CSS.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800/50 flex flex-wrap gap-1.5">
+              <span class="text-[9px] font-mono bg-slate-950 text-slate-300 px-2 py-0.5 rounded border border-slate-900">React</span>
+              <span class="text-[9px] font-mono bg-slate-950 text-slate-300 px-2 py-0.5 rounded border border-slate-900">Vite</span>
+              <span class="text-[9px] font-mono bg-slate-950 text-slate-300 px-2 py-0.5 rounded border border-slate-900">Tailwind CSS</span>
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="p-5 rounded-2xl border bg-slate-900/40 border-slate-800/80 hover:border-slate-700 transition-all flex flex-col justify-between service-card" id="sc-3">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400">End-to-End</span>
+                <span class="text-[10px] font-bold font-mono text-emerald-400">LKR 25,000+</span>
+              </div>
+              <h3 class="text-sm font-bold text-white mb-2">Full-Stack Business Platforms</h3>
+              <p class="text-xs leading-relaxed text-slate-400">Enterprise stock management tools, custom client ERP dashboards, invoicing modules, database replication, and automated reporting systems.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800/50 flex flex-wrap gap-1.5">
+              <span class="text-[9px] font-mono bg-slate-950 text-slate-300 px-2 py-0.5 rounded border border-slate-900">Express.js</span>
+              <span class="text-[9px] font-mono bg-slate-950 text-slate-300 px-2 py-0.5 rounded border border-slate-900">Node.js</span>
+              <span class="text-[9px] font-mono bg-slate-950 text-slate-300 px-2 py-0.5 rounded border border-slate-900">REST APIs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Callout Banner -->
+        <div class="p-6 rounded-3xl border bg-slate-900/40 border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6 callout-card" id="callout-card">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 text-xl flex-shrink-0">
+              ⚡
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-white">Need a high-fidelity system spec sheet and estimate?</h4>
+              <p class="text-xs text-slate-400 mt-0.5">Use the dynamic Brief Estimator below to configure your custom app layout and calculate budget requirements instantly.</p>
+            </div>
+          </div>
+          <button onclick="switchTab('estimator')" class="px-5 py-2.5 text-xs font-bold bg-blue-600 hover:bg-blue-500 text-white rounded-xl shadow-md transition-all whitespace-nowrap cursor-pointer">
+            Configure Brief Spec &rarr;
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB 2: iCET ACADEMY TIMELINE -->
+      <div id="tab-academy" class="tab-content hidden space-y-8">
+        <div>
+          <h2 class="text-lg font-bold tracking-tight mb-1 text-white" id="aca-title">Education & Syllabus Modules</h2>
+          <p class="text-xs text-slate-400">The detailed curriculum followed at ICBT Campus and the Institute of Computer Engineering Technology (iCET).</p>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Module Block 1 -->
+          <div class="p-6 rounded-3xl border bg-slate-900/40 border-slate-800 relative aca-item">
+            <div class="absolute top-6 right-6 text-xs font-mono font-bold bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full border border-indigo-500/20">
+              6 Months
+            </div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-indigo-600/20 flex items-center justify-center text-indigo-400 font-bold">
+                01
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-white">International Diploma in ICT</h3>
+                <p class="text-xs text-slate-400">ICBT Campus, Sri Lanka</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div class="p-3.5 bg-slate-950/40 border border-slate-900 rounded-xl text-xs">
+                <span class="font-bold text-indigo-400 block mb-1">Core Python Techniques</span>
+                Variables, statements, functional logic, basic math script design, and custom data processing concepts.
+              </div>
+              <div class="p-3.5 bg-slate-950/40 border border-slate-900 rounded-xl text-xs">
+                <span class="font-bold text-indigo-400 block mb-1">Web Development Fundamentals</span>
+                Responsive HTML5 page markup, custom CSS selectors, design theory, styling, layouts, and browser forms.
+              </div>
+              <div class="p-3.5 bg-slate-950/40 border border-slate-900 rounded-xl text-xs">
+                <span class="font-bold text-indigo-400 block mb-1">Computer Systems & Mathematics</span>
+                Digital numeric storage, logic loops, basic hardware vectors, operating system structures.
+              </div>
+            </div>
+          </div>
+
+          <!-- Module Block 2 -->
+          <div class="p-6 rounded-3xl border bg-slate-900/40 border-slate-800 relative aca-item">
+            <div class="absolute top-6 right-6 text-xs font-mono font-bold bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">
+              8 Months (Master Level)
+            </div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-blue-600/20 flex items-center justify-center text-blue-400 font-bold">
+                02
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-white">iCET Certified Master (iCM) in Software Engineering</h3>
+                <p class="text-xs text-slate-400">Institute of Computer Engineering Technology (Reg No: P03/0177)</p>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400 mb-4 leading-relaxed">A rigorous, industry-recognized software engineering curriculum specializing in enterprise OOP design patterns and relational backend systems.</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="p-3.5 bg-slate-950/40 border border-slate-900 rounded-xl text-xs">
+                <span class="font-bold text-blue-400 block mb-1">Advanced Java SE / OOP Design</span>
+                RAM mapping, object orientation (Inheritance, Polymorphism, Encapsulation), Java Collections API, exception structures.
+              </div>
+              <div class="p-3.5 bg-slate-950/40 border border-slate-900 rounded-xl text-xs">
+                <span class="font-bold text-blue-400 block mb-1">Database Management Systems (DBMS)</span>
+                SQL queries, DDL/DML, relational indexing, primary/foreign normalizations, structural integrity schemas.
+              </div>
+              <div class="p-3.5 bg-slate-950/40 border border-slate-900 rounded-xl text-xs">
+                <span class="font-bold text-blue-400 block mb-1">Enterprise Java Frameworks</span>
+                Spring Boot, MVC structures, security config, controllers, custom JPA databases, and JWT rest token auth.
+              </div>
+              <div class="p-3.5 bg-slate-950/40 border border-slate-900 rounded-xl text-xs">
+                <span class="font-bold text-blue-400 block mb-1">Web UI Frameworks</span>
+                React single page application state management, Vite builders, asynchronous web fetches, and Tailwind styled UI.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: BRIEF ESTIMATOR -->
+      <div id="tab-estimator" class="tab-content hidden space-y-8">
+        <div>
+          <h2 class="text-lg font-bold tracking-tight mb-1 text-white">Interactive Project Brief Builder</h2>
+          <p class="text-xs text-slate-400">Select parameters to calculate estimated budgets, development durations, and compile an official engineering brief.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+          <!-- Calculator Form (7 columns) -->
+          <div class="md:col-span-7 p-6 rounded-3xl border bg-slate-900/40 border-slate-800 space-y-5" id="estimator-form">
+            <!-- Project Type -->
+            <div>
+              <label class="text-xs font-bold text-slate-400 block mb-2">1. Select Application Architecture</label>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <button onclick="setArchType('landing', 10000, 1)" id="arch-landing" class="p-3 rounded-xl border border-blue-500 bg-blue-600/10 text-white text-xs font-semibold text-center hover:bg-slate-900 transition-all cursor-pointer">
+                  <span class="block text-[10px] text-slate-400">Static</span> Single landing page
+                </button>
+                <button onclick="setArchType('fullstack', 15000, 4)" id="arch-fullstack" class="p-3 rounded-xl border border-slate-800 bg-slate-950 text-slate-400 text-xs font-semibold text-center hover:bg-slate-900 transition-all cursor-pointer">
+                  <span class="block text-[10px] text-slate-400">Enterprise</span> Fullstack Java/React
+                </button>
+                <button onclick="setArchType('ecommerce', 25000, 5)" id="arch-ecommerce" class="p-3 rounded-xl border border-slate-800 bg-slate-950 text-slate-400 text-xs font-semibold text-center hover:bg-slate-900 transition-all cursor-pointer">
+                  <span class="block text-[10px] text-slate-400">Multi-Role</span> E-Commerce Platform
+                </button>
+              </div>
+            </div>
+
+            <!-- Features -->
+            <div>
+              <label class="text-xs font-bold text-slate-400 block mb-2">2. Check Required Specialized Modules</label>
+              <div class="space-y-2">
+                <label class="flex items-center justify-between p-3 rounded-xl border border-slate-800 bg-slate-950/40 text-xs cursor-pointer hover:bg-slate-900/50">
+                  <div class="flex items-center gap-2">
+                    <input type="checkbox" id="feat-auth" onchange="toggleAddOn('auth', 5000, 1)" class="w-4 h-4 rounded border-slate-800 text-blue-600 focus:ring-0">
+                    <div>
+                      <span class="font-bold block text-white" id="lbl-auth">User Authentication Module</span>
+                      <p class="text-[10px] text-slate-400">Secure hashed database accounts, multi-role routes, JWT logins.</p>
+                    </div>
+                  </div>
+                  <span class="font-bold text-emerald-400">+ LKR 5,000</span>
+                </label>
+
+                <label class="flex items-center justify-between p-3 rounded-xl border border-slate-800 bg-slate-950/40 text-xs cursor-pointer hover:bg-slate-900/50">
+                  <div class="flex items-center gap-2">
+                    <input type="checkbox" id="feat-db" onchange="toggleAddOn('db', 7500, 1)" class="w-4 h-4 rounded border-slate-800 text-blue-600 focus:ring-0">
+                    <div>
+                      <span class="font-bold block text-white">Relational DB Optimizer & Schemas</span>
+                      <p class="text-[10px] text-slate-400">MySQL/Postgres tables setup, normalized data structure models, speed index keys.</p>
+                    </div>
+                  </div>
+                  <span class="font-bold text-emerald-400">+ LKR 7,500</span>
+                </label>
+
+                <label class="flex items-center justify-between p-3 rounded-xl border border-slate-800 bg-slate-950/40 text-xs cursor-pointer hover:bg-slate-900/50">
+                  <div class="flex items-center gap-2">
+                    <input type="checkbox" id="feat-pay" onchange="toggleAddOn('pay', 10000, 1)" class="w-4 h-4 rounded border-slate-800 text-blue-600 focus:ring-0">
+                    <div>
+                      <span class="font-bold block text-white">Payment Gateway & Receipt Generator</span>
+                      <p class="text-[10px] text-slate-400">Stripe card billing interface, automatic invoice PDF rendering, transaction logs.</p>
+                    </div>
+                  </div>
+                  <span class="font-bold text-emerald-400">+ LKR 10,000</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Custom Input Details -->
+            <div>
+              <label class="text-xs font-bold text-slate-400 block mb-1.5">3. Additional Custom Requirements</label>
+              <textarea id="brief-notes" placeholder="e.g. 'I need a inventory tracker for my tea shop with billing prints...'" class="w-full h-24 p-3 bg-slate-950 border border-slate-800 rounded-xl text-xs focus:outline-none focus:border-blue-500 text-white placeholder-slate-500 transition-all"></textarea>
+            </div>
+
+            <button onclick="compileBrief()" class="w-full py-3 text-xs font-bold bg-gradient-to-r from-orange-600 to-amber-600 text-white rounded-xl shadow-lg hover:from-orange-500 hover:to-amber-500 transition-all cursor-pointer flex items-center justify-center gap-2">
+              <i data-lucide="sparkles" class="w-4 h-4"></i> Compile Specification Sheet
+            </button>
+          </div>
+
+          <!-- Result Card (5 columns) -->
+          <div class="md:col-span-5 flex flex-col justify-between p-6 rounded-3xl border bg-slate-900/50 border-slate-800 h-full relative" id="calc-sheet">
+            <div class="space-y-5">
+              <div>
+                <span class="text-[9px] font-mono tracking-widest font-bold uppercase text-slate-400 block mb-1">Solution Design Plan</span>
+                <h3 class="text-sm font-bold text-white">Dynamic Cost Specification</h3>
+              </div>
+
+              <!-- Live calculated Cost Block -->
+              <div class="p-4 bg-slate-950/60 rounded-2xl border border-slate-900/80">
+                <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider block mb-1">Total Estimated Investment</span>
+                <span class="text-2xl font-extrabold text-blue-400 font-display block" id="lbl-total-cost">LKR 10,000</span>
+                <span class="text-[10px] text-emerald-400 font-semibold" id="lbl-usd-convert">~$33 USD</span>
+              </div>
+
+              <!-- Technical Details Breakdown -->
+              <div class="space-y-2.5 text-xs">
+                <div class="flex justify-between py-1.5 border-b border-slate-900/60">
+                  <span class="text-slate-400">Project Timeline:</span>
+                  <span class="font-bold text-white" id="lbl-timeline">1 Week</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-900/60">
+                  <span class="text-slate-400">Architecture Class:</span>
+                  <span class="font-bold text-white" id="lbl-arch">Static landing page</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-slate-900/60">
+                  <span class="text-slate-400">Hosting Environment:</span>
+                  <span class="font-bold text-white text-right">Vite Static / Live Server Host</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- WhatsApp Link -->
+            <div class="mt-6 space-y-2">
+              <button onclick="launchWhatsApp()" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-all shadow-md flex items-center justify-center gap-1.5 cursor-pointer">
+                <i data-lucide="message-square" class="w-4 h-4"></i> Send Brief to WhatsApp &rarr;
+              </button>
+              <button onclick="addInquiryToKanban()" class="w-full py-2.5 rounded-xl bg-slate-800 border border-slate-700 hover:bg-slate-700 text-slate-200 text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+                <i data-lucide="plus-circle" class="w-4 h-4 text-indigo-400"></i> Submit to Kanban Board
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: DELIVERY KANBAN BOARD -->
+      <div id="tab-board" class="tab-content hidden space-y-8">
+        <div>
+          <h2 class="text-lg font-bold tracking-tight mb-1 text-white">Workspace Delivery Kanban</h2>
+          <p class="text-xs text-slate-400">Real-time status tracking for active design specs, development tickets, and delivered enterprise builds.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4" id="kanban-cols">
+          <!-- received lane -->
+          <div class="p-4 bg-slate-950/40 border border-slate-900 rounded-2xl flex flex-col justify-between" id="lane-received">
+            <div>
+              <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-900">
+                <span class="text-xs font-bold text-slate-300">Received/Spec Queue</span>
+                <span class="px-2 py-0.5 text-[9px] font-mono bg-slate-900 text-slate-400 rounded" id="kanban-cnt-received">1</span>
+              </div>
+              <div class="space-y-3" id="col-received">
+                <div class="p-3 bg-slate-900/50 border border-slate-800 rounded-xl space-y-2">
+                  <span class="text-[9px] uppercase tracking-wider font-bold text-slate-400">Sahan Gunawardhana</span>
+                  <h4 class="text-xs font-bold text-white">Tea Inventory API</h4>
+                  <p class="text-[10px] text-slate-400">Secure inventory tracker API built with Spring Boot, custom controllers, and normal schema structure.</p>
+                  <div class="flex justify-between items-center text-[9px] text-slate-500 pt-2 border-t border-slate-800/60">
+                    <span>2 Weeks</span>
+                    <span>LKR 22,500</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- planning lane -->
+          <div class="p-4 bg-slate-950/40 border border-slate-900 rounded-2xl" id="lane-planning">
+            <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-900">
+              <span class="text-xs font-bold text-blue-400">Planning Architecture</span>
+              <span class="px-2 py-0.5 text-[9px] font-mono bg-slate-900 text-slate-400 rounded">1</span>
+            </div>
+            <div class="space-y-3">
+              <div class="p-3 bg-slate-900/50 border border-slate-800 rounded-xl space-y-2">
+                <span class="text-[9px] uppercase tracking-wider font-bold text-blue-400">Amara Jayasekara</span>
+                <h4 class="text-xs font-bold text-white">Organic Cinnamon Web Portal</h4>
+                <p class="text-[10px] text-slate-400">Direct-to-consumer web system with responsive details and user invoicing integrations.</p>
+                <div class="flex justify-between items-center text-[9px] text-slate-500 pt-2 border-t border-slate-800/60">
+                  <span>5 Weeks</span>
+                  <span>LKR 25,000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- development lane -->
+          <div class="p-4 bg-slate-950/40 border border-slate-900 rounded-2xl" id="lane-dev">
+            <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-900">
+              <span class="text-xs font-bold text-amber-500">In Live Build</span>
+              <span class="px-2 py-0.5 text-[9px] font-mono bg-slate-900 text-slate-400 rounded">2</span>
+            </div>
+            <div class="space-y-3">
+              <div class="p-3 bg-slate-900/50 border border-slate-800 rounded-xl space-y-2">
+                <span class="text-[9px] uppercase tracking-wider font-bold text-amber-400">Dinethi Perera</span>
+                <h4 class="text-xs font-bold text-white">Retail ERP Dashboard</h4>
+                <p class="text-[10px] text-slate-400">Multi-role warehouse stock control panels with automated sales billing print layouts.</p>
+                <div class="flex justify-between items-center text-[9px] text-slate-500 pt-2 border-t border-slate-800/60">
+                  <span>4 Weeks</span>
+                  <span>LKR 47,500</span>
+                </div>
+              </div>
+              <div class="p-3 bg-slate-900/50 border border-slate-800 rounded-xl space-y-2">
+                <span class="text-[9px] uppercase tracking-wider font-bold text-amber-400">Nippon Builders</span>
+                <h4 class="text-xs font-bold text-white">Relational DB Backend API</h4>
+                <p class="text-[10px] text-slate-400">Enterprise Java Spring Boot RESTful API endpoints matching Student Ledger databases.</p>
+                <div class="flex justify-between items-center text-[9px] text-slate-500 pt-2 border-t border-slate-800/60">
+                  <span>3 Weeks</span>
+                  <span>LKR 22,500</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- completed lane -->
+          <div class="p-4 bg-slate-950/40 border border-slate-900 rounded-2xl" id="lane-delivered">
+            <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-900">
+              <span class="text-xs font-bold text-emerald-400">Fully Delivered</span>
+              <span class="px-2 py-0.5 text-[9px] font-mono bg-slate-900 text-slate-400 rounded">1</span>
+            </div>
+            <div class="space-y-3">
+              <div class="p-3 bg-slate-900/30 border border-slate-900/80 rounded-xl space-y-2 opacity-85">
+                <span class="text-[9px] uppercase tracking-wider font-bold text-emerald-400 flex items-center gap-1">
+                  <i data-lucide="check-circle" class="w-3 h-3 text-emerald-400"></i> Blue Lotus 360
+                </span>
+                <h4 class="text-xs font-bold text-white">Brand Marketing Platform</h4>
+                <p class="text-[10px] text-slate-500">Ultra-fast static web showcase optimized for high speed loading, layout spacing, and perfect styling.</p>
+                <div class="flex justify-between items-center text-[9px] text-slate-600 pt-2 border-t border-slate-900">
+                  <span>1 Week</span>
+                  <span class="font-bold text-emerald-500">Completed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 5: OFFLINE AI CHAT SIMULATOR -->
+      <div id="tab-advisor" class="tab-content hidden space-y-8">
+        <div>
+          <h2 class="text-lg font-bold tracking-tight mb-1 text-white">Interactive AI Advisor Chat</h2>
+          <p class="text-xs text-slate-400">Consult with Rev. Rahula's virtual project assistant. Works perfectly offline inside any local browser!</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+          <!-- Chat box (8 columns) -->
+          <div class="md:col-span-8 p-4 rounded-3xl border bg-slate-900/40 border-slate-800 flex flex-col justify-between h-[460px]" id="chat-container">
+            <!-- Messages stream -->
+            <div id="chat-stream" class="flex-1 overflow-y-auto space-y-3 p-2 text-xs">
+              <!-- Welcome message -->
+              <div class="flex gap-2">
+                <div class="w-7 h-7 rounded-lg bg-orange-600 text-white font-bold flex items-center justify-center flex-shrink-0 text-[10px] font-display">AI</div>
+                <div class="p-3 bg-slate-950 border border-slate-900 rounded-2xl max-w-[85%] text-slate-200 leading-relaxed">
+                  ආයුබෝවන්! (Hi!) I am Rev. Thalawe Rahula Himi's AI coordinator. I can explain his professional background at ICBT, iCET Certified Master training, and give you design suggestions or price estimations. Let me know what you need!
+                </div>
+              </div>
+            </div>
+
+            <!-- Suggestion chips -->
+            <div class="pt-3 flex flex-wrap gap-1.5 border-t border-slate-800/40 mb-3" id="chip-container">
+              <button onclick="sendPredefinedQuestion(0)" class="px-2.5 py-1 bg-slate-950 hover:bg-slate-900 border border-slate-800 text-[10px] text-slate-300 rounded-full transition-all cursor-pointer">
+                What program did he follow at iCET?
+              </button>
+              <button onclick="sendPredefinedQuestion(1)" class="px-2.5 py-1 bg-slate-950 hover:bg-slate-900 border border-slate-800 text-[10px] text-slate-300 rounded-full transition-all cursor-pointer">
+                Tell me about his ICT Diploma
+              </button>
+              <button onclick="sendPredefinedQuestion(2)" class="px-2.5 py-1 bg-slate-950 hover:bg-slate-900 border border-slate-800 text-[10px] text-slate-300 rounded-full transition-all cursor-pointer">
+                Can you recommend tech for an E-Commerce system?
+              </button>
+            </div>
+
+            <!-- Text input bar -->
+            <div class="flex gap-2">
+              <input type="text" id="chat-input-text" placeholder="Type a message or ask a coding question..." onkeydown="handleInputKey(event)" class="flex-1 px-4 py-3 bg-slate-950 border border-slate-800 rounded-2xl text-xs focus:outline-none focus:border-orange-500 text-white placeholder-slate-500 transition-all">
+              <button onclick="submitChatText()" class="px-4 bg-orange-600 hover:bg-orange-500 text-white rounded-2xl flex items-center justify-center cursor-pointer transition-all">
+                <i data-lucide="send" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Direct contact stats (4 columns) -->
+          <div class="md:col-span-4 p-5 rounded-3xl border bg-slate-900/50 border-slate-800 space-y-4" id="direct-contact-card">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Direct Contacts</h3>
+            
+            <div class="space-y-3 text-xs">
+              <div class="flex items-center gap-2.5 p-3 bg-slate-950/60 rounded-xl border border-slate-900">
+                <i data-lucide="mail" class="w-4 h-4 text-blue-400"></i>
+                <div>
+                  <span class="block text-[10px] text-slate-500 font-bold uppercase">Official Email</span>
+                  <a href="mailto:sithuvilidehena207@gmail.com" class="text-blue-400 hover:underline">sithuvilidehena207@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2.5 p-3 bg-slate-950/60 rounded-xl border border-slate-900">
+                <i data-lucide="phone" class="w-4 h-4 text-emerald-400"></i>
+                <div>
+                  <span class="block text-[10px] text-slate-500 font-bold uppercase">Phone & WhatsApp</span>
+                  <a href="tel:0770739557" class="text-emerald-400 hover:underline">077 073 9557</a>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2.5 p-3 bg-slate-950/60 rounded-xl border border-slate-900">
+                <i data-lucide="map-pin" class="w-4 h-4 text-amber-400"></i>
+                <div>
+                  <span class="block text-[10px] text-slate-500 font-bold uppercase">Location</span>
+                  <span class="text-slate-300">Sri Lanka</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- PERSISTENT FLOATING IOS DOCK -->
+  <div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 px-5 py-3 rounded-3xl border backdrop-blur-2xl transition-all duration-300 max-w-[95%] md:max-w-max shadow-2xl flex items-center justify-center gap-4 bg-slate-950/70 border-slate-800 text-slate-300" id="ios-dock">
+    
+    <!-- Home tab button -->
+    <button onclick="switchTab('home')" id="dock-home" class="group relative flex flex-col items-center justify-center cursor-pointer">
+      <div class="absolute -top-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none px-2 py-1 rounded-lg text-[9px] font-bold bg-slate-900 text-white border border-slate-800 whitespace-nowrap shadow-md">My Services</div>
+      <div class="relative w-11 h-11 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 bg-orange-600 text-white shadow-lg shadow-orange-500/25" id="bubble-home">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span class="absolute -bottom-1 w-1.5 h-1.5 rounded-full bg-orange-500 shadow shadow-orange-500/30" id="dot-home"></span>
+      </div>
+    </button>
+
+    <!-- Academy tab button -->
+    <button onclick="switchTab('academy')" id="dock-academy" class="group relative flex flex-col items-center justify-center cursor-pointer">
+      <div class="absolute -top-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none px-2 py-1 rounded-lg text-[9px] font-bold bg-slate-900 text-white border border-slate-800 whitespace-nowrap shadow-md">iCET Academy</div>
+      <div class="relative w-11 h-11 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 bg-slate-950/40 hover:bg-slate-900/60 border border-slate-800 text-slate-400 hover:text-slate-200" id="bubble-academy">
+        <i data-lucide="award" class="w-5 h-5"></i>
+        <span class="absolute -bottom-1 w-1.5 h-1.5 rounded-full bg-orange-500 shadow shadow-orange-500/30 hidden" id="dot-academy"></span>
+      </div>
+    </button>
+
+    <!-- Brief Estimator tab button -->
+    <button onclick="switchTab('estimator')" id="dock-estimator" class="group relative flex flex-col items-center justify-center cursor-pointer">
+      <div class="absolute -top-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none px-2 py-1 rounded-lg text-[9px] font-bold bg-slate-900 text-white border border-slate-800 whitespace-nowrap shadow-md">Brief Builder</div>
+      <div class="relative w-11 h-11 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 bg-slate-950/40 hover:bg-slate-900/60 border border-slate-800 text-slate-400 hover:text-slate-200" id="bubble-estimator">
+        <i data-lucide="layers" class="w-5 h-5"></i>
+        <span class="absolute -bottom-1 w-1.5 h-1.5 rounded-full bg-orange-500 shadow shadow-orange-500/30 hidden" id="dot-estimator"></span>
+      </div>
+    </button>
+
+    <!-- Kanban board tab button -->
+    <button onclick="switchTab('board')" id="dock-board" class="group relative flex flex-col items-center justify-center cursor-pointer">
+      <div class="absolute -top-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none px-2 py-1 rounded-lg text-[9px] font-bold bg-slate-900 text-white border border-slate-800 whitespace-nowrap shadow-md">Kanban Queue</div>
+      <div class="relative w-11 h-11 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 bg-slate-950/40 hover:bg-slate-900/60 border border-slate-800 text-slate-400 hover:text-slate-200" id="bubble-board">
+        <i data-lucide="trello" class="w-5 h-5"></i>
+        <span class="absolute -bottom-1 w-1.5 h-1.5 rounded-full bg-orange-500 shadow shadow-orange-500/30 hidden" id="dot-board"></span>
+      </div>
+    </button>
+
+    <!-- Advisor tab button -->
+    <button onclick="switchTab('advisor')" id="dock-advisor" class="group relative flex flex-col items-center justify-center cursor-pointer">
+      <div class="absolute -top-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none px-2 py-1 rounded-lg text-[9px] font-bold bg-slate-900 text-white border border-slate-800 whitespace-nowrap shadow-md">AI Advisor</div>
+      <div class="relative w-11 h-11 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 bg-slate-950/40 hover:bg-slate-900/60 border border-slate-800 text-slate-400 hover:text-slate-200" id="bubble-advisor">
+        <i data-lucide="message-square-code" class="w-5 h-5"></i>
+        <span class="absolute -bottom-1 w-1.5 h-1.5 rounded-full bg-orange-500 shadow shadow-orange-500/30 hidden" id="dot-advisor"></span>
+      </div>
+    </button>
+
+  </div>
+
+  <!-- OFFLINE PORTABLE INTERACTIVE JAVASCRIPT LOGIC -->
+  <script>
+    // Live Clock Simulation
+    function updateLiveClock() {
+      const now = new Date();
+      const options = { hour: '2-digit', minute: '2-digit', hour12: true };
+      document.getElementById('live-time').innerText = now.toLocaleTimeString([], options);
+    }
+    setInterval(updateLiveClock, 1000);
+    updateLiveClock();
+
+    // Theme state (Dark/Light)
+    let isDarkMode = true;
+    function toggleTheme() {
+      isDarkMode = !isDarkMode;
+      
+      const body = document.getElementById('body-root');
+      const statusBar = document.getElementById('status-bar');
+      const terminalBadge = document.getElementById('terminal-badge');
+      const themeIcon = document.getElementById('theme-icon');
+      const themeBtn = document.getElementById('theme-btn');
+      
+      const bioCard = document.getElementById('bio-card');
+      const bioName = document.getElementById('bio-name');
+      const bioSub = document.getElementById('bio-sub');
+      const storyP1 = document.getElementById('story-p1');
+      const storyP2 = document.getElementById('story-p2');
+      const contactsRow = document.getElementById('contacts-row');
+      const advBtn = document.getElementById('adv-btn');
+      const mailBtn = document.getElementById('mail-btn');
+      const phoneBtn = document.getElementById('phone-btn');
+      const whatsappBtn = document.getElementById('whatsapp-btn');
+      
+      const icetCard = document.getElementById('icet-stat-card');
+      const icbtCard = document.getElementById('icbt-stat-card');
+      
+      const srvTitle = document.getElementById('srv-title');
+      const srvDesc = document.getElementById('srv-desc');
+      const serviceCards = document.querySelectorAll('.service-card');
+      const calloutCard = document.getElementById('callout-card');
+      
+      const acaTitle = document.getElementById('aca-title');
+      const acaItems = document.querySelectorAll('.aca-item');
+      
+      const estimatorForm = document.getElementById('estimator-form');
+      const calcSheet = document.getElementById('calc-sheet');
+      
+      const laneReceived = document.getElementById('lane-received');
+      const lanePlanning = document.getElementById('lane-planning');
+      const laneDev = document.getElementById('lane-dev');
+      const laneDelivered = document.getElementById('lane-delivered');
+      
+      const chatContainer = document.getElementById('chat-container');
+      const chatInputText = document.getElementById('chat-input-text');
+      const directContactCard = document.getElementById('direct-contact-card');
+      
+      const iosDock = document.getElementById('ios-dock');
+      const bubbles = document.querySelectorAll('[id^="bubble-"]');
+
+      if (isDarkMode) {
+        // Apply Dark Mode mesh & text styles
+        body.className = "dark-mesh-gradient text-slate-100 min-h-screen pb-32 transition-colors duration-500 overflow-x-hidden font-sans";
+        statusBar.className = "fixed top-0 left-0 right-0 z-50 px-4 py-2.5 flex justify-between items-center text-[11px] font-semibold tracking-wide backdrop-blur-md border-b bg-slate-950/40 border-slate-900 text-slate-300 transition-colors";
+        terminalBadge.className = "text-[9px] px-2.5 py-0.5 rounded-full font-mono bg-slate-900 text-slate-400 border border-slate-800/60";
+        themeIcon.setAttribute('data-lucide', 'sun');
+        themeBtn.className = "p-1 rounded-lg hover:scale-105 transition-all cursor-pointer text-amber-400";
+        
+        bioCard.className = "md:col-span-8 p-6 rounded-3xl border backdrop-blur-md flex flex-col justify-between overflow-hidden relative glassmorphism-ios";
+        bioName.className = "text-xl font-extrabold tracking-tight text-white";
+        bioSub.className = "text-xs font-semibold text-blue-400";
+        storyP1.className = "text-sm leading-relaxed text-slate-300";
+        storyP2.className = "text-sm leading-relaxed text-slate-300";
+        if (advBtn) advBtn.className = "px-4 py-2.5 text-xs font-bold rounded-xl border border-slate-800 bg-slate-900/40 hover:bg-slate-800 text-slate-200 transition-all flex items-center gap-1.5 cursor-pointer";
+        if (mailBtn) mailBtn.className = "px-4 py-2.5 text-xs font-bold rounded-xl border border-slate-800 bg-slate-900/40 hover:bg-slate-800 text-slate-300 transition-all flex items-center gap-1.5 cursor-pointer";
+        if (phoneBtn) phoneBtn.className = "px-4 py-2.5 text-xs font-bold rounded-xl border border-slate-800 bg-slate-900/40 hover:bg-slate-800 text-slate-300 transition-all flex items-center gap-1.5 cursor-pointer";
+        
+        icetCard.className = "p-5 rounded-3xl flex flex-col justify-between overflow-hidden relative border glassmorphism-ios h-[142px]";
+        icbtCard.className = "p-5 rounded-3xl flex flex-col justify-between overflow-hidden relative border glassmorphism-ios h-[142px]";
+        
+        if (srvTitle) srvTitle.className = "text-lg font-bold tracking-tight mb-1 text-white";
+        if (srvDesc) srvDesc.className = "text-xs text-slate-400";
+        serviceCards.forEach(c => c.className = "p-5 rounded-2xl border bg-slate-900/40 border-slate-800/80 hover:border-slate-700 transition-all flex flex-col justify-between service-card");
+        if (calloutCard) calloutCard.className = "p-6 rounded-3xl border bg-slate-900/40 border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6 callout-card";
+        
+        if (acaTitle) acaTitle.className = "text-lg font-bold tracking-tight mb-1 text-white";
+        acaItems.forEach(i => i.className = "p-6 rounded-3xl border bg-slate-900/40 border-slate-800 relative aca-item");
+        
+        if (estimatorForm) estimatorForm.className = "md:col-span-7 p-6 rounded-3xl border bg-slate-900/40 border-slate-800 space-y-5";
+        if (calcSheet) calcSheet.className = "md:col-span-5 flex flex-col justify-between p-6 rounded-3xl border bg-slate-900/50 border-slate-800 h-full relative";
+        
+        if (laneReceived) laneReceived.className = "p-4 bg-slate-950/40 border border-slate-900 rounded-2xl flex flex-col justify-between";
+        if (lanePlanning) lanePlanning.className = "p-4 bg-slate-950/40 border border-slate-900 rounded-2xl";
+        if (laneDev) laneDev.className = "p-4 bg-slate-950/40 border border-slate-900 rounded-2xl";
+        if (laneDelivered) laneDelivered.className = "p-4 bg-slate-950/40 border border-slate-900 rounded-2xl";
+        
+        if (chatContainer) chatContainer.className = "md:col-span-8 p-4 rounded-3xl border bg-slate-900/40 border-slate-800 flex flex-col justify-between h-[460px]";
+        if (directContactCard) directContactCard.className = "md:col-span-4 p-5 rounded-3xl border bg-slate-900/50 border-slate-800 space-y-4";
+        
+        iosDock.className = "fixed bottom-6 left-1/2 -translate-x-1/2 z-40 px-5 py-3 rounded-3xl border backdrop-blur-2xl transition-all duration-300 max-w-[95%] md:max-w-max shadow-2xl flex items-center justify-center gap-4 bg-slate-950/70 border-slate-800 text-slate-300";
+      } else {
+        // Apply Light Mode mesh & text styles
+        body.className = "light-mesh-gradient text-slate-800 min-h-screen pb-32 transition-colors duration-500 overflow-x-hidden font-sans";
+        statusBar.className = "fixed top-0 left-0 right-0 z-50 px-4 py-2.5 flex justify-between items-center text-[11px] font-semibold tracking-wide backdrop-blur-md border-b bg-white/50 border-slate-200 text-slate-700 transition-colors";
+        terminalBadge.className = "text-[9px] px-2.5 py-0.5 rounded-full font-mono bg-white text-slate-600 border border-slate-200";
+        themeIcon.setAttribute('data-lucide', 'moon');
+        themeBtn.className = "p-1 rounded-lg hover:scale-105 transition-all cursor-pointer text-indigo-600";
+        
+        bioCard.className = "md:col-span-8 p-6 rounded-3xl border backdrop-blur-md flex flex-col justify-between overflow-hidden relative glassmorphism-ios-light shadow-sm";
+        bioName.className = "text-xl font-extrabold tracking-tight text-slate-900";
+        bioSub.className = "text-xs font-semibold text-blue-600";
+        storyP1.className = "text-sm leading-relaxed text-slate-600";
+        storyP2.className = "text-sm leading-relaxed text-slate-600";
+        if (advBtn) advBtn.className = "px-4 py-2.5 text-xs font-bold rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 transition-all flex items-center gap-1.5 cursor-pointer shadow-sm";
+        if (mailBtn) mailBtn.className = "px-4 py-2.5 text-xs font-bold rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 transition-all flex items-center gap-1.5 cursor-pointer shadow-sm";
+        if (phoneBtn) phoneBtn.className = "px-4 py-2.5 text-xs font-bold rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 transition-all flex items-center gap-1.5 cursor-pointer shadow-sm";
+        
+        icetCard.className = "p-5 rounded-3xl flex flex-col justify-between overflow-hidden relative border glassmorphism-ios-light h-[142px] shadow-sm";
+        icbtCard.className = "p-5 rounded-3xl flex flex-col justify-between overflow-hidden relative border glassmorphism-ios-light h-[142px] shadow-sm";
+        
+        if (srvTitle) srvTitle.className = "text-lg font-bold tracking-tight mb-1 text-slate-900";
+        if (srvDesc) srvDesc.className = "text-xs text-slate-500";
+        serviceCards.forEach(c => c.className = "p-5 rounded-2xl border bg-white/70 border-slate-200 hover:border-slate-300 transition-all flex flex-col justify-between service-card shadow-sm");
+        if (calloutCard) calloutCard.className = "p-6 rounded-3xl border bg-white/70 border-slate-200 flex flex-col md:flex-row items-center justify-between gap-6 callout-card shadow-sm";
+        
+        if (acaTitle) acaTitle.className = "text-lg font-bold tracking-tight mb-1 text-slate-900";
+        acaItems.forEach(i => i.className = "p-6 rounded-3xl border bg-white/70 border-slate-200 relative aca-item shadow-sm");
+        
+        if (estimatorForm) estimatorForm.className = "md:col-span-7 p-6 rounded-3xl border bg-white/70 border-slate-200 space-y-5 shadow-sm";
+        if (calcSheet) calcSheet.className = "md:col-span-5 flex flex-col justify-between p-6 rounded-3xl border bg-white/80 border-slate-200 h-full relative shadow-sm";
+        
+        if (laneReceived) laneReceived.className = "p-4 bg-white/60 border border-slate-200 rounded-2xl flex flex-col justify-between shadow-sm";
+        if (lanePlanning) lanePlanning.className = "p-4 bg-white/60 border border-slate-200 rounded-2xl shadow-sm";
+        if (laneDev) laneDev.className = "p-4 bg-white/60 border border-slate-200 rounded-2xl shadow-sm";
+        if (laneDelivered) laneDelivered.className = "p-4 bg-white/60 border border-slate-200 rounded-2xl shadow-sm";
+        
+        if (chatContainer) chatContainer.className = "md:col-span-8 p-4 rounded-3xl border bg-white/70 border-slate-200 flex flex-col justify-between h-[460px] shadow-sm";
+        if (directContactCard) directContactCard.className = "md:col-span-4 p-5 rounded-3xl border bg-white/80 border-slate-200 space-y-4 shadow-sm";
+        
+        iosDock.className = "fixed bottom-6 left-1/2 -translate-x-1/2 z-40 px-5 py-3 rounded-3xl border backdrop-blur-2xl transition-all duration-300 max-w-[95%] md:max-w-max shadow-lg flex items-center justify-center gap-4 bg-white/80 border-slate-200 text-slate-700";
+      }
+
+      // Re-render Lucide icons dynamically to apply SVG states
+      lucide.createIcons();
+    }
+
+    // Portal Navigation Tabs System
+    function switchTab(tabId) {
+      // Hide all tabs
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      // Show targeted tab
+      document.getElementById('tab-' + tabId).classList.remove('hidden');
+      
+      // Update persistent bottom dock active states
+      const dockButtons = ['home', 'academy', 'estimator', 'board', 'advisor'];
+      dockButtons.forEach(btn => {
+        const bubble = document.getElementById('bubble-' + btn);
+        const dot = document.getElementById('dot-' + btn);
+        
+        if (btn === tabId) {
+          // Highlight active icon bubble
+          bubble.className = "relative w-11 h-11 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 bg-orange-600 text-white shadow-lg shadow-orange-500/25";
+          dot.classList.remove('hidden');
+        } else {
+          // Soften inactive icon bubbles
+          if (isDarkMode) {
+            bubble.className = "relative w-11 h-11 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 bg-slate-950/40 hover:bg-slate-900/60 border border-slate-800 text-slate-400 hover:text-slate-200";
+          } else {
+            bubble.className = "relative w-11 h-11 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 bg-slate-100 hover:bg-slate-200 border border-slate-200/60 text-slate-500 hover:text-slate-800";
+          }
+          dot.classList.add('hidden');
+        }
+      });
+      
+      // Scroll smoothly back to top on tab change
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Interactive Brief Builder Specifications Calculations
+    let currentArch = 'landing';
+    let basePrice = 10000;
+    let baseWeeks = 1;
+    let selectedAddOns = {};
+
+    function setArchType(archId, price, weeks) {
+      currentArch = archId;
+      basePrice = price;
+      baseWeeks = weeks;
+
+      // Update button selection visual styling
+      const types = ['landing', 'fullstack', 'ecommerce'];
+      types.forEach(t => {
+        const btn = document.getElementById('arch-' + t);
+        if (t === archId) {
+          btn.className = "p-3 rounded-xl border border-blue-500 bg-blue-600/10 text-white text-xs font-semibold text-center hover:bg-slate-900 transition-all cursor-pointer";
+        } else {
+          if (isDarkMode) {
+            btn.className = "p-3 rounded-xl border border-slate-800 bg-slate-950 text-slate-400 text-xs font-semibold text-center hover:bg-slate-900 transition-all cursor-pointer";
+          } else {
+            btn.className = "p-3 rounded-xl border border-slate-200 bg-white text-slate-500 text-xs font-semibold text-center hover:bg-slate-100 transition-all cursor-pointer";
+          }
+        }
+      });
+
+      calculateTotals();
+    }
+
+    function toggleAddOn(addonKey, price, durationBonus) {
+      const checkbox = document.getElementById('feat-' + addonKey);
+      if (checkbox.checked) {
+        selectedAddOns[addonKey] = { price, durationBonus };
+      } else {
+        delete selectedAddOns[addonKey];
+      }
+      calculateTotals();
+    }
+
+    let finalCostCalculated = 10000;
+    let finalWeeksCalculated = 1;
+
+    function calculateTotals() {
+      let totalCost = basePrice;
+      let totalWeeks = baseWeeks;
+
+      for (const key in selectedAddOns) {
+        totalCost += selectedAddOns[key].price;
+        totalWeeks += selectedAddOns[key].durationBonus;
+      }
+
+      finalCostCalculated = totalCost;
+      finalWeeksCalculated = totalWeeks;
+
+      // Render calculations dynamically on interface
+      document.getElementById('lbl-total-cost').innerText = "LKR " + totalCost.toLocaleString();
+      document.getElementById('lbl-usd-convert').innerText = "~$" + Math.round(totalCost / 300) + " USD";
+      document.getElementById('lbl-timeline').innerText = totalWeeks + (totalWeeks === 1 ? " Week" : " Weeks");
+      
+      let archLabel = "Static Landing Page";
+      if (currentArch === 'fullstack') archLabel = "Enterprise Fullstack (Spring Boot)";
+      if (currentArch === 'ecommerce') archLabel = "E-Commerce Logistics Platform";
+      document.getElementById('lbl-arch').innerText = archLabel;
+    }
+
+    // Trigger WhatsApp compilation launch
+    function launchWhatsApp() {
+      let archLabel = "Static Landing Page";
+      if (currentArch === 'fullstack') archLabel = "Enterprise Fullstack (Spring Boot)";
+      if (currentArch === 'ecommerce') archLabel = "E-Commerce Logistics Platform";
+
+      const customNotes = document.getElementById('brief-notes').value || "No additional parameters provided.";
+
+      const messageText = `Hi Rev. Thalawe Rahula Himi, I just generated a dynamic spec brief for my app on your website:
+- Architecture Class: ${archLabel}
+- Investment Cost: LKR ${finalCostCalculated.toLocaleString()}
+- Expected Duration: ${finalWeeksCalculated} weeks
+- Custom Notes: ${customNotes}
+Please let me know when you are free to discuss!`;
+
+      const encoded = encodeURIComponent(messageText);
+      window.open(`https://wa.me/94770739557?text=${encoded}`, '_blank');
+    }
+
+    // Dynamic compilation submission to Kanban order board
+    function compileBrief() {
+      calculateTotals();
+
+      const notes = document.getElementById('brief-notes').value || "";
+      let features = [];
+      if (document.getElementById('feat-auth').checked) features.push("User Authentication");
+      if (document.getElementById('feat-db').checked) features.push("Relational DB Optimizer");
+      if (document.getElementById('feat-pay').checked) features.push("Payment Gateway");
+
+      const loadingText = "Compiling Enterprise Architecture Spec with AI...";
+      const originalArchText = document.getElementById('lbl-arch').innerText;
+      document.getElementById('lbl-arch').innerText = loadingText;
+
+      fetch('/api/generate-brief', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          projectType: currentArch,
+          features: features,
+          description: notes,
+          timelineWeeks: finalWeeksCalculated
+        })
+      })
+      .then(res => {
+        if (!res.ok) throw new Error("Brief API unavailable");
+        return res.json();
+      })
+      .then(data => {
+        document.getElementById('lbl-arch').innerText = data.architecture || originalArchText;
+        document.getElementById('lbl-total-cost').innerText = data.estimatedCost || ("LKR " + finalCostCalculated.toLocaleString());
+        
+        if (data.estimatedCost) {
+          const match = data.estimatedCost.match(/\d+[,.]\d+/g) || data.estimatedCost.match(/\d+/g);
+          if (match) {
+            const lkrNum = parseInt(match[0].replace(/,/g, ''));
+            document.getElementById('lbl-usd-convert').innerText = "~$" + Math.round(lkrNum / 300) + " USD";
+          }
+        }
+        
+        if (data.timeline) {
+          document.getElementById('lbl-timeline').innerText = data.timeline;
+        }
+
+        if (data.summary) {
+          const notesTextarea = document.getElementById('brief-notes');
+          notesTextarea.value = `[AI RECOMMENDED SUMMARY]:\n${data.summary}\n\n[MY ORIGINAL NOTES]:\n${notes}`;
+        }
+      })
+      .catch(err => {
+        console.warn("Brief API fallback:", err);
+        calculateTotals();
+      })
+      .finally(() => {
+        const card = document.getElementById('calc-sheet');
+        card.classList.add('scale-[1.02]');
+        setTimeout(() => card.classList.remove('scale-[1.02]'), 300);
+      });
+    }
+
+    // Dynamic submission of custom configured spec to Kanban received lane
+    function addInquiryToKanban() {
+      let archLabel = "Static Landing Page";
+      if (currentArch === 'fullstack') archLabel = "Enterprise Fullstack (Spring Boot)";
+      if (currentArch === 'ecommerce') archLabel = "E-Commerce Logistics Platform";
+
+      const customNotes = document.getElementById('brief-notes').value || "General full-featured system spec.";
+      const randomID = Math.floor(1000 + Math.random() * 9000);
+
+      // Create new dynamic card
+      const newCard = document.createElement('div');
+      newCard.className = "p-3 bg-slate-900/50 border border-slate-800 rounded-xl space-y-2 fade-in";
+      newCard.innerHTML = `
+        <span class="text-[9px] uppercase tracking-wider font-bold text-orange-400">Spec Brief #${randomID}</span>
+        <h4 class="text-xs font-bold text-white">${archLabel}</h4>
+        <p class="text-[10px] text-slate-400">${customNotes}</p>
+        <div class="flex justify-between items-center text-[9px] text-slate-500 pt-2 border-t border-slate-800/60">
+          <span>${finalWeeksCalculated} Weeks</span>
+          <span class="text-blue-400 font-bold">LKR ${finalCostCalculated.toLocaleString()}</span>
+        </div>
+      `;
+
+      // Prepend to received lane container
+      const colReceived = document.getElementById('col-received');
+      colReceived.insertBefore(newCard, colReceived.firstChild);
+
+      // Update counter
+      const currentCnt = parseInt(document.getElementById('kanban-cnt-received').innerText);
+      document.getElementById('kanban-cnt-received').innerText = currentCnt + 1;
+
+      // Navigate to Board tab to see the created card immediately
+      switchTab('board');
+    }
+
+    // OFFLINE INTUITIVE CHAT ENGINE LOGIC
+    const AI_RESPONSES = {
+      0: `<strong>iCET Software Engineering Syllabus (Certified Master Program):</strong>
+<br>He studied advanced enterprise-level software engineering under Dr. Niroth Samarawickrama:
+<ul class="list-disc pl-4 mt-1.5 space-y-1">
+  <li><strong>Advanced Java SE & OOP:</strong> Memory allocations, thread states, collection lists, and core design structures.</li>
+  <li><strong>DBMS:</strong> Complex SQL queries, database indexing, normalizations, and structural replication layouts.</li>
+  <li><strong>Spring Boot:</strong> MVC designs, enterprise dependency injections, Spring Data JPA repositories, REST API endpoints, and solid security tokens.</li>
+  <li><strong>React & Frontend:</strong> Client-side route models, Vite builds, state loops, and responsive design with Tailwind CSS.</li>
+</ul>`,
+      1: `<strong>ICBT International Diploma in ICT:</strong>
+<br>Rev. Rahula completed the full 6-Month International Curriculum covering core technology essentials:
+<ul class="list-disc pl-4 mt-1.5 space-y-1">
+  <li>Programming algorithms & structures using Python.</li>
+  <li>HTML, CSS, Web standard components, styling sheets, and responsive grids.</li>
+  <li>Computational mathematics, numeric tables, and hardware structures.</li>
+</ul>`,
+      2: `<strong>Recommended E-Commerce Tech Stack & Estimate:</strong>
+<br>For a highly performant and secure Sri Lankan E-Commerce portal, here is our standard layout solution design:
+<ul class="list-disc pl-4 mt-1.5 space-y-1">
+  <li><strong>Frontend Client:</strong> React SPA compiled with Vite and styled beautifully with a mobile-first Tailwind design.</li>
+  <li><strong>Secure Backend:</strong> Java Spring Boot microservice or clean Node.js Express server.</li>
+  <li><strong>Database Layer:</strong> MySQL or PostgreSQL hosting optimized tables for stocks, carts, and customer accounts.</li>
+  <li><strong>Payments:</strong> Stripe integration supporting online credit card checkouts and automatic receipt delivery.</li>
+</ul>
+<br><strong>Price Range:</strong> Approx LKR 150,000 - 250,000 based on modules chosen. Complete within 4-5 weeks. Use the **Brief Builder** on our page to calculate instantly!`
+    };
+
+    let chatHistory = [];
+
+    function sendPredefinedQuestion(index) {
+      const questions = [
+        "What program did he follow at iCET?",
+        "Tell me about his ICT Diploma",
+        "Can you recommend tech for an E-Commerce system?"
+      ];
+
+      appendMessage('user', questions[index]);
+      const loadingId = appendLoadingIndicator();
+
+      fetch('/api/gemini-consult', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: questions[index], chatHistory: chatHistory.slice(0, -1) })
+      })
+      .then(res => {
+        if (!res.ok) throw new Error("Endpoint error");
+        return res.json();
+      })
+      .then(data => {
+        removeLoadingIndicator(loadingId);
+        appendMessage('ai', data.reply);
+      })
+      .catch(err => {
+        console.warn("Falling back to pre-coded answer:", err);
+        setTimeout(() => {
+          removeLoadingIndicator(loadingId);
+          appendMessage('ai', AI_RESPONSES[index]);
+        }, 450);
+      });
+    }
+
+    function appendMessage(sender, text) {
+      const stream = document.getElementById('chat-stream');
+      const msgDiv = document.createElement('div');
+      msgDiv.className = "flex gap-2 fade-in";
+      
+      if (sender === 'user') {
+        msgDiv.innerHTML = `
+          <div class="ml-auto p-3 bg-orange-600/10 border border-orange-500/20 rounded-2xl max-w-[85%] text-slate-200 text-right font-medium">
+            ${text}
+          </div>
+          <div class="w-7 h-7 rounded-lg bg-orange-600/20 text-orange-400 font-bold flex items-center justify-center flex-shrink-0 text-[10px] font-mono">ME</div>
+        `;
+      } else {
+        msgDiv.innerHTML = `
+          <div class="w-7 h-7 rounded-lg bg-orange-600 text-white font-bold flex items-center justify-center flex-shrink-0 text-[10px] font-display">AI</div>
+          <div class="p-3 bg-slate-950 border border-slate-900 rounded-2xl max-w-[85%] text-slate-200 leading-relaxed">
+            ${text}
+          </div>
+        `;
+      }
+
+      stream.appendChild(msgDiv);
+      stream.scrollTop = stream.scrollHeight;
+      
+      chatHistory.push({ role: sender, text: text });
+    }
+
+    function appendLoadingIndicator() {
+      const stream = document.getElementById('chat-stream');
+      const id = "indicator-" + Date.now();
+      const loadDiv = document.createElement('div');
+      loadDiv.id = id;
+      loadDiv.className = "flex gap-2 fade-in";
+      loadDiv.innerHTML = `
+        <div class="w-7 h-7 rounded-lg bg-orange-600 text-white font-bold flex items-center justify-center flex-shrink-0 text-[10px] font-display">AI</div>
+        <div class="p-3 bg-slate-950 border border-slate-900 rounded-2xl text-slate-400 italic">
+          Thinking...
+        </div>
+      `;
+      stream.appendChild(loadDiv);
+      stream.scrollTop = stream.scrollHeight;
+      return id;
+    }
+
+    function removeLoadingIndicator(id) {
+      const el = document.getElementById(id);
+      if (el) el.remove();
+    }
+
+    function handleInputKey(event) {
+      if (event.key === 'Enter') {
+        submitChatText();
+      }
+    }
+
+    function submitChatText() {
+      const input = document.getElementById('chat-input-text');
+      const val = input.value.trim();
+      if (!val) return;
+
+      appendMessage('user', val);
+      input.value = "";
+
+      const loadingId = appendLoadingIndicator();
+
+      fetch('/api/gemini-consult', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: val, chatHistory: chatHistory.slice(0, -1) })
+      })
+      .then(res => {
+        if (!res.ok) throw new Error("Endpoint error");
+        return res.json();
+      })
+      .then(data => {
+        removeLoadingIndicator(loadingId);
+        appendMessage('ai', data.reply);
+      })
+      .catch(err => {
+        console.warn("Falling back to local simulated parser:", err);
+        setTimeout(() => {
+          removeLoadingIndicator(loadingId);
+          
+          const lowerVal = val.toLowerCase();
+          let reply = "";
+
+          if (lowerVal.includes("hi") || lowerVal.includes("hello") || lowerVal.includes("helo") || lowerVal.includes("ආයුබෝවන්") || lowerVal.includes("ayubowan")) {
+            reply = "ආයුබෝවන්! Hi! How can I assist you with Rev. Thalawe Rahula Himi's software services today?";
+          } else if (lowerVal.includes("icet") || lowerVal.includes("icm") || lowerVal.includes("master") || lowerVal.includes("course") || lowerVal.includes("ඉගෙන")) {
+            reply = AI_RESPONSES[0];
+          } else if (lowerVal.includes("icbt") || lowerVal.includes("diploma") || lowerVal.includes("ඩිප්ලෝමා")) {
+            reply = AI_RESPONSES[1];
+          } else if (lowerVal.includes("price") || lowerVal.includes("cost") || lowerVal.includes("estimation") || lowerVal.includes("ගණන") || lowerVal.includes("කීයක්")) {
+            reply = `<strong>Software Cost Estimations:</strong><br>
+- Static Responsive Site: LKR 10,000+
+- E-Commerce System: LKR 25,000+
+- Spring Boot REST backend: LKR 15,000+
+<br>Please configure your desired parameters inside the **Brief Builder** on our page for a highly customized real-time quote estimate!`;
+          } else if (lowerVal.includes("phone") || lowerVal.includes("contact") || lowerVal.includes("whatsapp") || lowerVal.includes("number") || lowerVal.includes("whatsapp")) {
+            reply = "You can contact Rev. Thalawe Rahula Himi directly at:<br>📞 **Phone / WhatsApp:** 077 073 9557<br>✉️ **Official Email:** sithuvilidehena207@gmail.com";
+          } else if (lowerVal.includes("sinhal") || lowerVal.includes("සිංහල")) {
+            reply = "ඔව්, මට සිංහලෙන් කතා කරන්න පුළුවන්! Rev. Rahula ගේ software designs, iCET හෝ ICBT අධ්‍යාපන විස්තර, නැතහොත් pricing estimates ගැන ඕනෑම දෙයක් අහන්න.";
+          } else {
+            reply = `Thank you for your question! Rev. Thalawe Rahula Himi is ready to help build your next application.
+<br><br>Since I am currently running inside your offline portal simulation, for specific answers about <em>"${val}"</em>, feel free to drop him a message on WhatsApp at <strong>077 073 9557</strong> or send an email to <strong>sithuvilidehena207@gmail.com</strong>!`;
+          }
+
+          appendMessage('ai', reply);
+        }, 750);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      lucide.createIcons();
+    });
+  </script>
+
+</body>
+</html>
